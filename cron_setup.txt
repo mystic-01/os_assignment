@@ -1,0 +1,14 @@
+# Install cronie
+pacman -S cronie
+
+# Start cronie service
+sudo systemctl enable cronie.service --now
+
+# create symlink to vim for opening cronie file
+sudo ln -s /usr/bin/vim /usr/bin/vi
+
+# Launch cronie file
+crontab -e
+
+# Add job to cronie file
+0 0 * * * /home/youknowwho/os_assignment/backup_script.sh -s /home/youknowwho/os_assignment/source_dir -d /home/youknowwho/os_assignment/destination_dir -o /home/youknowwho/os_assignment/stats.txt
